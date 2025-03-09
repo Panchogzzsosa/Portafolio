@@ -160,7 +160,7 @@ function Projects() {
     {
       title: 'E-commerce Platform',
       description: 'Plataforma de comercio electrónico con carrito de compras, pagos y gestión de productos.',
-      image: '/jersix.jpeg',
+      image: './jersix.jpeg',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
       githubUrl: 'https://github.com/Panchogzzsosa/JersixMx',
       liveUrl: 'https://jersix.mx'
@@ -168,7 +168,7 @@ function Projects() {
     {
       title: 'Landing Page for Financial Education Platform',
       description: 'Página de destino para una plataforma de educación financiera.',
-      image: '/capitanfinanciero.png',
+      image: './capitanfinanciero.png',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
       githubUrl: 'https://github.com/Panchogzzsosa/CapitanFinanciero',
       liveUrl: 'https://capitanfinanciero.com'
@@ -176,7 +176,7 @@ function Projects() {
     {
       title: '',
       description: 'Plataforma de blog con editor rich text y sistema de comentarios.',
-      image: '/project3.jpg',
+      image: './project3.jpg',
       technologies: ['React', 'Express', 'PostgreSQL'],
       githubUrl: 'https://github.com/username/blog-platform',
       liveUrl: 'https://blog-platform-demo.com'
