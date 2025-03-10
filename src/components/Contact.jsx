@@ -346,6 +346,8 @@ function Contact() {
           .social-links {
             display: flex;
             gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
           }
 
           .social-link {
@@ -359,11 +361,6 @@ function Contact() {
             justify-content: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
-          }
-
-          .social-link:hover {
-            background: var(--primary-color);
-            color: white;
           }
 
           .contact-form {
@@ -444,6 +441,14 @@ function Contact() {
           @media (max-width: 768px) {
             .contact-container {
               grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+              order: 2;
+            }
+
+            .contact-form {
+              order: 1;
             }
 
             .section-title {

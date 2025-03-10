@@ -14,7 +14,7 @@ function SkillCard({ icon: Icon, name, category }) {
       whileHover={{ y: -5 }}
     >
       <motion.div
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1 }}
         transition={{ duration: 0.2 }}
       >
         <Icon className="skill-icon" />
@@ -56,11 +56,10 @@ function SkillCard({ icon: Icon, name, category }) {
           font-size: 2.5rem;
           margin-bottom: 1rem;
           color: var(--primary-color);
-          transition: transform 0.3s ease;
         }
 
         .skill-card:hover .skill-icon {
-          transform: scale(1.1);
+          transform: none;
         }
 
         h3 {

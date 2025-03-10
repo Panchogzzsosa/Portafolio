@@ -87,8 +87,8 @@ function Navbar({ activeSection, setActiveSection }) {
           justify-content: space-between;
           align-items: center;
           padding: 1rem 2rem;
-          background: rgba(17, 17, 17, 0.95);
-          backdrop-filter: blur(10px);
+          background: rgba(17, 17, 17, 0.2);
+          backdrop-filter: blur(8px);
           z-index: 1000;
         }
 
@@ -162,7 +162,7 @@ function Navbar({ activeSection, setActiveSection }) {
             height: 100vh;
             width: 70%;
             flex-direction: column;
-            background: rgba(17, 17, 17, 0.98);
+            background: rgba(17, 17, 17, 0.95);
             padding: 5rem 2rem;
             transition: right 0.3s ease;
           }
