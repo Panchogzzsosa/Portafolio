@@ -32,6 +32,7 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 whileHover={{ scale: 1.05 }}
+                animate={{ y: [-5, 5, -5], transition: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
               >
                 <img src="/perfil.jpeg" alt="Mi foto de perfil" />
               </motion.div>
@@ -65,7 +66,7 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
                 {
                   icon: '💼',
                   title: 'Experiencia',
-                  text: '+2 años desarrollando aplicaciones web'
+                  text: '1 año desarrollando aplicaciones web'
                 },
                 {
                   icon: '🎓',
@@ -86,6 +87,7 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 * (index + 3) }}
                   whileHover={{ y: -5, boxShadow: '0 8px 12px -1px rgba(0, 0, 0, 0.15)' }}
+                  animate={{ y: [-3, 3, -3], transition: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 } }}
                 >
                   <div className="card-icon">{card.icon}</div>
                   <h3>{card.title}</h3>

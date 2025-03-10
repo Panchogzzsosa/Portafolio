@@ -26,11 +26,24 @@
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 800;
   margin-bottom: clamp(0.5rem, 2vw, 1rem);
-  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  background: linear-gradient(45deg, #2563eb, #1d4ed8, #1e40af, #1e3a8a, #2563eb);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: slideUp 0.8s ease-out;
+  animation: gradientAnimation 8s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero-content p {
