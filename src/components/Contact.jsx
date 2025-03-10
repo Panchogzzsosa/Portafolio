@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import { motion, LazyMotion, domAnimation } from 'framer-motion'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -90,7 +90,8 @@ function Contact() {
   ]
 
   return (
-    <motion.section 
+    <LazyMotion features={domAnimation}>
+      <motion.section 
       id="contact" 
       className="contact-section"
       initial={{ opacity: 0 }}
@@ -419,6 +420,7 @@ function Contact() {
         }
       `}</style>
     </motion.section>
+    </LazyMotion>
   )
 }
 

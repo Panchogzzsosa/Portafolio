@@ -1,7 +1,7 @@
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGit, FaDocker, FaPython } from 'react-icons/fa'
 import { SiFlutter, SiDart } from 'react-icons/si'
 import PropTypes from 'prop-types'
-import { motion } from 'framer-motion'
+import { motion, LazyMotion, domAnimation } from 'framer-motion'
 
 function SkillCard({ icon: Icon, name, category }) {
   return (
@@ -112,110 +112,112 @@ function Skills() {
   }
 
   return (
-    <motion.section 
-      id="skills" 
-      className="skills-section"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-    >
-      <motion.h2 
-        className="section-title"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+    <LazyMotion features={domAnimation}>
+      <motion.section 
+        id="skills" 
+        className="skills-section"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.8 }}
       >
-        Mis Habilidades
-      </motion.h2>
-      {Object.entries(skillsByCategory).map(([category, skills]) => (
-        <motion.div 
-          key={category} 
-          className="skills-category"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <motion.h3 
-            className="category-title"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 0.9 }}
+          Mis Habilidades
+        </motion.h2>
+        {Object.entries(skillsByCategory).map(([category, skills]) => (
+          <motion.div 
+            key={category} 
+            className="skills-category"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {category}
-          </motion.h3>
-          <div className="skills-grid">
-            {skills.map((skill, index) => (
-              <SkillCard key={index} {...skill} category={category} />
-            ))}
-          </div>
-        </motion.div>
-      ))}
-      <style jsx>{`
-        .skills-section {
-          padding: 4rem 2rem;
-          position: relative;
-          overflow: hidden;
-        }
+            <motion.h3 
+              className="category-title"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 0.9 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              {category}
+            </motion.h3>
+            <div className="skills-grid">
+              {skills.map((skill, index) => (
+                <SkillCard key={index} {...skill} category={category} />
+              ))}
+            </div>
+          </motion.div>
+        ))}
+        <style jsx>{`
+          .skills-section {
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+          }
 
-        .skills-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
-          pointer-events: none;
-        }
+          .skills-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+          }
 
-        .section-title {
-          text-align: center;
-          font-size: 2.5rem;
-          margin-bottom: 3rem;
-          background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .skills-category {
-          margin-bottom: 3rem;
-        }
-
-        .category-title {
-          font-size: 1.8rem;
-          margin-bottom: 1.5rem;
-          color: var(--text-color);
-          opacity: 0.9;
-        }
-
-        .skills-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 1.5rem;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
           .section-title {
-            font-size: 2rem;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          .skills-category {
+            margin-bottom: 3rem;
           }
 
           .category-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.9;
           }
 
           .skills-grid {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
           }
-        }
-      `}</style>
-    </motion.section>
+
+          @media (max-width: 768px) {
+            .section-title {
+              font-size: 2rem;
+            }
+
+            .category-title {
+              font-size: 1.5rem;
+            }
+
+            .skills-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}</style>
+      </motion.section>
+    </LazyMotion>
   )
 }
 
