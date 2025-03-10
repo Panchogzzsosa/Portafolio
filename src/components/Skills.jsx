@@ -2,6 +2,7 @@ import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGit, FaDocker,
 import { SiFlutter, SiDart } from 'react-icons/si'
 import PropTypes from 'prop-types'
 import { motion, LazyMotion, domAnimation } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
 function SkillCard({ icon: Icon, name, category }) {
   return (
@@ -89,6 +90,29 @@ SkillCard.propTypes = {
 }
 
 function Skills() {
+  const { language } = useLanguage()
+
+  const content = {
+    es: {
+      title: 'Mis Habilidades',
+      categories: {
+        Frontend: 'Frontend',
+        'Mobile Development': 'Desarrollo Móvil',
+        Backend: 'Backend',
+        Tools: 'Herramientas'
+      }
+    },
+    en: {
+      title: 'My Skills',
+      categories: {
+        Frontend: 'Frontend',
+        'Mobile Development': 'Mobile Development',
+        Backend: 'Backend',
+        Tools: 'Tools'
+      }
+    }
+  }
+
   const skillsByCategory = {
     Frontend: [
       { icon: FaHtml5, name: 'HTML5', level: 90 },
@@ -127,7 +151,7 @@ function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Mis Habilidades
+          {content[language].title}
         </motion.h2>
         {Object.entries(skillsByCategory).map(([category, skills]) => (
           <motion.div 
@@ -145,7 +169,7 @@ function Skills() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              {category}
+              {content[language].categories[category]}
             </motion.h3>
             <div className="skills-grid">
               {skills.map((skill, index) => (
