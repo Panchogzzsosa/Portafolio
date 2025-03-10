@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -89,37 +90,85 @@ function Contact() {
   ]
 
   return (
-    <section id="contact" className="contact-section">
-      <h2 className="section-title">Contacto</h2>
+    <motion.section 
+      id="contact" 
+      className="contact-section"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.h2 
+        className="section-title"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        Contacto
+      </motion.h2>
       <div className="contact-container">
-        <div className="contact-info">
-          <div className="info-card">
+        <motion.div 
+          className="contact-info"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div 
+            className="info-card"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02 }}
+          >
             {contactInfo.map((info, index) => (
-              <div key={index} className="info-item">
+              <motion.div 
+                key={index} 
+                className="info-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <info.icon className="info-icon" />
                 <div className="info-content">
                   <h3>{info.label}</h3>
                   <p>{info.value}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           <div className="social-links">
             {socialLinks.map((social, index) => (
-              <a
+              <motion.a
                 key={index}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
                 aria-label={social.label}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <social.icon />
-              </a>
+              </motion.a>
             ))}
           </div>
-        </div>
-        <form className="contact-form" onSubmit={handleSubmit}>
+        </motion.div>
+        <motion.form 
+          className="contact-form" 
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="form-group">
             <input
               type="text"
@@ -154,8 +203,15 @@ function Contact() {
               {formStatus.message}
             </div>
           )}
-          <button type="submit" className="submit-button">Enviar Mensaje</button>
-        </form>
+          <motion.button 
+            type="submit" 
+            className="submit-button"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Enviar Mensaje
+          </motion.button>
+        </motion.form>
       </div>
       <style jsx>{`
         .contact-section {
@@ -362,7 +418,7 @@ function Contact() {
           }
         }
       `}</style>
-    </section>
+    </motion.section>
   )
 }
 

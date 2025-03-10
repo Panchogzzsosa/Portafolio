@@ -1,40 +1,96 @@
 import PropTypes from 'prop-types'
 import { FaDownload } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 function About({ description = 'Soy un desarrollador web apasionado por crear soluciones digitales innovadoras. Me especializo en el desarrollo Front End y disfruto construyendo aplicaciones web que combinen funcionalidad con una excelente experiencia de usuario.' }) {
   return (
-    <section id="about" className="about-section">
+    <motion.section
+      id="about"
+      className="about-section"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="about-content">
-        <h2 className="section-title">Sobre Mí</h2>
+        <motion.h2
+          className="section-title"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Sobre Mí
+        </motion.h2>
         <div className="about-container">
           <div className="profile-section">
-            <div className="profile-image">
+            <motion.div
+              className="profile-image"
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              whileHover={{ scale: 1.05 }}
+            >
               <img src="/perfil.jpeg" alt="Mi foto de perfil" />
-            </div>
-            <p className="about-description">{description}</p>
-            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="cv-download-button">
+            </motion.div>
+            <motion.p
+              className="about-description"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              {description}
+            </motion.p>
+            <motion.a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cv-download-button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
               <FaDownload className="download-icon" />
               Ver CV
-            </a>
+            </motion.a>
           </div>
           <div className="about-cards">
-            <div className="about-card">
-              <div className="card-icon">💼</div>
-              <h3>Experiencia</h3>
-              <p>+2 años desarrollando aplicaciones web</p>
-            </div>
-            <div className="about-card">
-              <div className="card-icon">🎓</div>
-              <h3>Educación</h3>
-              <p>Ingeniero en Tecnologias Computacionales
-                <br />
-                (Tecnologico de Monterrey)</p>
-            </div>
-            <div className="about-card">
-              <div className="card-icon">🚀</div>
-              <h3>Intereses</h3>
-              <p>Desarrollo Web, UX/UI, Nuevas Tecnologías</p>
-            </div>
+            {[
+              {
+                icon: '💼',
+                title: 'Experiencia',
+                text: '+2 años desarrollando aplicaciones web'
+              },
+              {
+                icon: '🎓',
+                title: 'Educación',
+                text: 'Ingeniero en Tecnologias Computacionales\n(Tecnologico de Monterrey)'
+              },
+              {
+                icon: '🚀',
+                title: 'Intereses',
+                text: 'Desarrollo Web, UX/UI, Nuevas Tecnologías'
+              }
+            ].map((card, index) => (
+              <motion.div
+                key={index}
+                className="about-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 * (index + 3) }}
+                whileHover={{ y: -5, boxShadow: '0 8px 12px -1px rgba(0, 0, 0, 0.15)' }}
+              >
+                <div className="card-icon">{card.icon}</div>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
@@ -189,7 +245,7 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
           font-size: 1.4rem;
         }
       `}</style>
-    </section>
+    </motion.section>
   )
 }
 

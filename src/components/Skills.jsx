@@ -1,13 +1,41 @@
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGit, FaDocker, FaPython } from 'react-icons/fa'
 import { SiFlutter, SiDart } from 'react-icons/si'
 import PropTypes from 'prop-types'
+import { motion } from 'framer-motion'
 
 function SkillCard({ icon: Icon, name, category }) {
   return (
-    <div className="skill-card">
-      <Icon className="skill-icon" />
-      <h3>{name}</h3>
-      <span className="skill-category">{category}</span>
+    <motion.div 
+      className="skill-card"
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -5 }}
+    >
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.2 }}
+      >
+        <Icon className="skill-icon" />
+      </motion.div>
+      <motion.h3
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        {name}
+      </motion.h3>
+      <motion.span 
+        className="skill-category"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.8 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        {category}
+      </motion.span>
       <style jsx>{`
         .skill-card {
           background: rgba(255, 255, 255, 0.05);
@@ -51,7 +79,7 @@ function SkillCard({ icon: Icon, name, category }) {
           opacity: 0.8;
         }
       `}</style>
-    </div>
+    </motion.div>
   )
 }
 
@@ -84,17 +112,47 @@ function Skills() {
   }
 
   return (
-    <section id="skills" className="skills-section">
-      <h2 className="section-title">Mis Habilidades</h2>
+    <motion.section 
+      id="skills" 
+      className="skills-section"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.h2 
+        className="section-title"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        Mis Habilidades
+      </motion.h2>
       {Object.entries(skillsByCategory).map(([category, skills]) => (
-        <div key={category} className="skills-category">
-          <h3 className="category-title">{category}</h3>
+        <motion.div 
+          key={category} 
+          className="skills-category"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.h3 
+            className="category-title"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.9 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {category}
+          </motion.h3>
           <div className="skills-grid">
             {skills.map((skill, index) => (
               <SkillCard key={index} {...skill} category={category} />
             ))}
           </div>
-        </div>
+        </motion.div>
       ))}
       <style jsx>{`
         .skills-section {
@@ -157,7 +215,7 @@ function Skills() {
           }
         }
       `}</style>
-    </section>
+    </motion.section>
   )
 }
 

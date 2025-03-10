@@ -1,32 +1,83 @@
 import PropTypes from 'prop-types'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 function ProjectCard({ title, description, image, technologies, githubUrl, liveUrl }) {
   return (
-    <div className="project-card">
+    <motion.div 
+      className="project-card"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      whileHover={{ y: -5 }}
+    >
       <div className="project-image">
         <img src={image} alt={title} />
-        <div className="project-overlay">
+        <motion.div 
+          className="project-overlay"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
           <div className="project-links">
             {githubUrl && (
-              <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+              <motion.a 
+                href={githubUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="project-link"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <FaGithub /> Código
-              </a>
+              </motion.a>
             )}
             {liveUrl && (
-              <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+              <motion.a 
+                href={liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="project-link"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <FaExternalLinkAlt /> Demo
-              </a>
+              </motion.a>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
       <div className="project-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <motion.h3
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {title}
+        </motion.h3>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          {description}
+        </motion.p>
         <div className="project-technologies">
           {technologies.map((tech, index) => (
-            <span key={index} className="tech-tag">{tech}</span>
+            <motion.span 
+              key={index} 
+              className="tech-tag"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+              whileHover={{ scale: 1.1 }}
+            >
+              {tech}
+            </motion.span>
           ))}
         </div>
       </div>
@@ -39,11 +90,6 @@ function ProjectCard({ title, description, image, technologies, githubUrl, liveU
           backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .project-image {
@@ -59,10 +105,6 @@ function ProjectCard({ title, description, image, technologies, githubUrl, liveU
           transition: transform 0.5s ease;
         }
 
-        .project-card:hover .project-image img {
-          transform: scale(1.1);
-        }
-
         .project-overlay {
           position: absolute;
           top: 0;
@@ -73,12 +115,6 @@ function ProjectCard({ title, description, image, technologies, githubUrl, liveU
           display: flex;
           align-items: center;
           justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-overlay {
-          opacity: 1;
         }
 
         .project-links {
@@ -95,11 +131,10 @@ function ProjectCard({ title, description, image, technologies, githubUrl, liveU
           align-items: center;
           gap: 0.5rem;
           font-weight: 500;
-          transition: transform 0.2s ease, background 0.2s ease;
+          transition: background 0.2s ease;
         }
 
         .project-link:hover {
-          transform: scale(1.05);
           background: var(--gradient-end);
         }
 
@@ -134,15 +169,13 @@ function ProjectCard({ title, description, image, technologies, githubUrl, liveU
           padding: 0.4rem 1rem;
           border-radius: 1rem;
           font-size: 0.9rem;
-          transition: transform 0.2s ease;
         }
 
         .tech-tag:hover {
-          transform: scale(1.05);
           background: rgba(99, 102, 241, 0.2);
         }
       `}</style>
-    </div>
+    </motion.div>
   )
 }
 
@@ -185,7 +218,15 @@ function Projects() {
 
   return (
     <section id="projects" className="projects-section">
-      <h2 className="section-title">Mis Proyectos</h2>
+      <motion.h2 
+        className="section-title"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        Mis Proyectos
+      </motion.h2>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <ProjectCard key={index} {...project} />
@@ -196,17 +237,6 @@ function Projects() {
           padding: 4rem 2rem;
           position: relative;
           overflow: hidden;
-        }
-
-        .projects-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
-          pointer-events: none;
         }
 
         .section-title {
@@ -228,12 +258,12 @@ function Projects() {
         }
 
         @media (max-width: 768px) {
-          .section-title {
-            font-size: 2rem;
-          }
-
           .projects-grid {
             grid-template-columns: 1fr;
+          }
+
+          .section-title {
+            font-size: 2rem;
           }
         }
       `}</style>
