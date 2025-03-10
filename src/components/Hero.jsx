@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './Hero.module.css'
+import { useLanguage } from '../context/LanguageContext'
 
-function Hero({ name = '[Tu Nombre]', title = 'Desarrollador Web Full Stack' }) {
+function Hero({ name = '[Tu Nombre]' }) {
+  const { language, translations } = useLanguage();
   const scrollToProjects = () => {
     document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })
   }
@@ -15,13 +17,13 @@ function Hero({ name = '[Tu Nombre]', title = 'Desarrollador Web Full Stack' }) 
         <div className={`${styles.shape} ${styles['shape-3']}`}></div>
       </div>
       <div className={styles['hero-content']}>
-        <h1>¡Hola! Soy {name}</h1>
-        <p>{title}</p>
+        <h1>{translations[language].hero.greeting} {name}</h1>
+        <p>{translations[language].hero.role}</p>
         <p className={styles['hero-description']}>
-          Creando experiencias web excepcionales con pasión y creatividad
+          {translations[language].hero.description}
         </p>
         <button className="cta-button" onClick={scrollToProjects}>
-          Ver Proyectos
+          {translations[language].projects.viewProject}
           <span className={styles['button-icon']}>→</span>
         </button>
       </div>

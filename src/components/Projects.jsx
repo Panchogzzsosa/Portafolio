@@ -1,8 +1,21 @@
-import PropTypes from 'prop-types'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import PropTypes from 'prop-types'
+import { useLanguage } from '../context/LanguageContext'
 
 function ProjectCard({ title, description, image, technologies, githubUrl, liveUrl }) {
+  const { language } = useLanguage()
+  const buttonText = {
+    es: {
+      code: 'Código',
+      demo: 'Demo'
+    },
+    en: {
+      code: 'Code',
+      demo: 'Demo'
+    }
+  }
+
   return (
     <motion.div 
       className="project-card"
@@ -30,7 +43,7 @@ function ProjectCard({ title, description, image, technologies, githubUrl, liveU
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaGithub /> Código
+                <FaGithub /> {buttonText[language].code}
               </motion.a>
             )}
             {liveUrl && (
@@ -42,7 +55,7 @@ function ProjectCard({ title, description, image, technologies, githubUrl, liveU
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaExternalLinkAlt /> Demo
+                <FaExternalLinkAlt /> {buttonText[language].demo}
               </motion.a>
             )}
           </div>
@@ -189,32 +202,71 @@ ProjectCard.propTypes = {
 }
 
 function Projects() {
-  const projects = [
-    {
-      title: 'E-commerce Platform',
-      description: 'Plataforma de comercio electrónico con carrito de compras, pagos y gestión de productos.',
-      image: '/jersix.jpeg',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
-      githubUrl: 'https://github.com/Panchogzzsosa/JersixMx',
-      liveUrl: 'https://jersix.mx'
+  const { language } = useLanguage()
+  
+  const projectsData = {
+    es: [
+      {
+        title: 'Plataforma E-commerce',
+        description: 'Plataforma de comercio electrónico con carrito de compras, pagos y gestión de productos.',
+        image: '/jersix.jpeg',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
+        githubUrl: 'https://github.com/Panchogzzsosa/JersixMx',
+        liveUrl: 'https://jersix.mx'
+      },
+      {
+        title: 'Landing Page de Plataforma de Educación Financiera',
+        description: 'Página de destino para una plataforma de educación financiera.',
+        image: '/capitanfinanciero.png',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
+        githubUrl: 'https://github.com/Panchogzzsosa/CapitanFinanciero',
+        liveUrl: 'https://capitanfinanciero.com'
+      },
+      {
+        title: 'Plataforma de Blog',
+        description: 'Plataforma de blog con editor rich text y sistema de comentarios.',
+        image: '/project3.jpg',
+        technologies: ['React', 'Express', 'PostgreSQL'],
+        githubUrl: 'https://github.com/username/blog-platform',
+        liveUrl: 'https://blog-platform-demo.com'
+      }
+    ],
+    en: [
+      {
+        title: 'E-commerce Platform',
+        description: 'E-commerce platform with shopping cart, payments, and product management.',
+        image: '/jersix.jpeg',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
+        githubUrl: 'https://github.com/Panchogzzsosa/JersixMx',
+        liveUrl: 'https://jersix.mx'
+      },
+      {
+        title: 'Financial Education Platform Landing Page',
+        description: 'Landing page for a financial education platform.',
+        image: '/capitanfinanciero.png',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
+        githubUrl: 'https://github.com/Panchogzzsosa/CapitanFinanciero',
+        liveUrl: 'https://capitanfinanciero.com'
+      },
+      {
+        title: 'Blog Platform',
+        description: 'Blog platform with rich text editor and commenting system.',
+        image: '/project3.jpg',
+        technologies: ['React', 'Express', 'PostgreSQL'],
+        githubUrl: 'https://github.com/username/blog-platform',
+        liveUrl: 'https://blog-platform-demo.com'
+      }
+    ]
+  }
+
+  const content = {
+    es: {
+      title: 'Mis Proyectos'
     },
-    {
-      title: 'Landing Page for Financial Education Platform',
-      description: 'Página de destino para una plataforma de educación financiera.',
-      image: '/capitanfinanciero.png',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
-      githubUrl: 'https://github.com/Panchogzzsosa/CapitanFinanciero',
-      liveUrl: 'https://capitanfinanciero.com'
-    },
-    {
-      title: '',
-      description: 'Plataforma de blog con editor rich text y sistema de comentarios.',
-      image: '/project3.jpg',
-      technologies: ['React', 'Express', 'PostgreSQL'],
-      githubUrl: 'https://github.com/username/blog-platform',
-      liveUrl: 'https://blog-platform-demo.com'
+    en: {
+      title: 'My Projects'
     }
-  ]
+  }
 
   return (
     <section id="projects" className="projects-section">
@@ -225,10 +277,10 @@ function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        Mis Proyectos
+        {content[language].title}
       </motion.h2>
       <div className="projects-grid">
-        {projects.map((project, index) => (
+        {projectsData[language].map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
       </div>

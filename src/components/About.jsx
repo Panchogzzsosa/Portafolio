@@ -1,8 +1,49 @@
 import PropTypes from 'prop-types'
 import { FaDownload } from 'react-icons/fa'
 import { motion, LazyMotion, domAnimation } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
-function About({ description = 'Soy un desarrollador web apasionado por crear soluciones digitales innovadoras. Me especializo en el desarrollo Front End y disfruto construyendo aplicaciones web que combinen funcionalidad con una excelente experiencia de usuario.' }) {
+function About({ description = {
+  es: 'Soy un desarrollador web apasionado por crear soluciones digitales innovadoras. Me especializo en el desarrollo Front End y disfruto construyendo aplicaciones web que combinen funcionalidad con una excelente experiencia de usuario.',
+  en: 'I am a web developer passionate about creating innovative digital solutions. I specialize in Front End development and enjoy building web applications that combine functionality with excellent user experience.'
+} }) {
+  const { language } = useLanguage()
+
+  const content = {
+    es: {
+      title: 'Sobre Mí',
+      downloadCV: 'Ver CV',
+      experience: {
+        title: 'Experiencia',
+        text: '1 año desarrollando aplicaciones web'
+      },
+      education: {
+        title: 'Educación',
+        text: 'Ingeniero en Tecnologias Computacionales\n(Tecnologico de Monterrey)'
+      },
+      interests: {
+        title: 'Intereses',
+        text: 'Desarrollo Web, UX/UI, Nuevas Tecnologías'
+      }
+    },
+    en: {
+      title: 'About Me',
+      downloadCV: 'View CV',
+      experience: {
+        title: 'Experience',
+        text: '1 year developing web applications'
+      },
+      education: {
+        title: 'Education',
+        text: 'Computer Technology Engineer\n(Tecnologico de Monterrey)'
+      },
+      interests: {
+        title: 'Interests',
+        text: 'Web Development, UX/UI, New Technologies'
+      }
+    }
+  }
+
   return (
     <LazyMotion features={domAnimation}>
       <motion.section
@@ -21,7 +62,7 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Sobre Mí
+            {content[language].title}
           </motion.h2>
           <div className="about-container">
             <div className="profile-section">
@@ -43,7 +84,7 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                {description}
+                {description[language]}
               </motion.p>
               <motion.a
                 href="/cv.pdf"
@@ -58,25 +99,25 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
                 <FaDownload className="download-icon" />
-                Ver CV
+                {content[language].downloadCV}
               </motion.a>
             </div>
             <div className="about-cards">
               {[
                 {
                   icon: '💼',
-                  title: 'Experiencia',
-                  text: '1 año desarrollando aplicaciones web'
+                  title: content[language].experience.title,
+                  text: content[language].experience.text
                 },
                 {
                   icon: '🎓',
-                  title: 'Educación',
-                  text: 'Ingeniero en Tecnologias Computacionales\n(Tecnologico de Monterrey)'
+                  title: content[language].education.title,
+                  text: content[language].education.text
                 },
                 {
                   icon: '🚀',
-                  title: 'Intereses',
-                  text: 'Desarrollo Web, UX/UI, Nuevas Tecnologías'
+                  title: content[language].interests.title,
+                  text: content[language].interests.text
                 }
               ].map((card, index) => (
                 <motion.div
@@ -156,96 +197,91 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
             height: 100%;
             object-fit: cover;
           }
-          
+
           .about-description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
             font-size: 1.1rem;
             line-height: 1.8;
-            max-width: 700px;
-            margin: 0 auto;
             color: var(--text-color);
-          }
-          
-          .about-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-          }
-          
-          .about-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            backdrop-filter: blur(10px);
-          }
-          
-          .about-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.15);
-          }
-          
-          .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-          }
-          
-          .about-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-          }
-          
-          @media (max-width: 768px) {
-            .about-cards {
-              grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-              font-size: 2rem;
-            }
-
-            .profile-image {
-              width: 150px;
-              height: 150px;
-            }
-
-            .about-card {
-              padding: 1.5rem;
-            }
           }
 
           .cv-download-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            margin-top: 2.5rem;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
             color: white;
             border-radius: 2rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
-            position: relative;
-            z-index: 1;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
           }
 
           .cv-download-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-          }
-
-          .cv-download-button:active {
-            transform: translateY(1px);
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15);
           }
 
           .download-icon {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+          }
+
+          .about-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+          }
+
+          .about-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          }
+
+          .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+          }
+
+          .about-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          .about-card p {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.6;
+          }
+
+          @media (max-width: 768px) {
+            .about-section {
+              padding: 3rem 1rem;
+            }
+
+            .section-title {
+              font-size: 2rem;
+            }
+
+            .about-description {
+              font-size: 1rem;
+              padding: 0 1rem;
+            }
+
+            .about-cards {
+              grid-template-columns: 1fr;
+            }
           }
         `}</style>
       </motion.section>
@@ -254,7 +290,10 @@ function About({ description = 'Soy un desarrollador web apasionado por crear so
 }
 
 About.propTypes = {
-  description: PropTypes.string
+  description: PropTypes.shape({
+    es: PropTypes.string.isRequired,
+    en: PropTypes.string.isRequired
+  })
 }
 
 export default About
