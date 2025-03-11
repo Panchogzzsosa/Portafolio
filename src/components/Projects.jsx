@@ -223,12 +223,12 @@ function Projects() {
         liveUrl: 'https://capitanfinanciero.com'
       },
       {
-        title: 'Plataforma de Blog',
-        description: 'Plataforma de blog con editor rich text y sistema de comentarios.',
-        image: '/project3.jpg',
-        technologies: ['React', 'Express', 'PostgreSQL'],
-        githubUrl: 'https://github.com/username/blog-platform',
-        liveUrl: 'https://blog-platform-demo.com'
+        title: 'Python Adventure',
+        description: 'Juego interactivo de programación en Python',
+        image: '/PythonAdventure.png',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap','React'],
+        githubUrl: 'https://github.com/Panchogzzsosa/Python-Adventure',
+        liveUrl: 'https://pythonadventure.netlify.app/'
       }
     ],
     en: [
@@ -249,10 +249,10 @@ function Projects() {
         liveUrl: 'https://capitanfinanciero.com'
       },
       {
-        title: 'Blog Platform',
-        description: 'Blog platform with rich text editor and commenting system.',
-        image: '/project3.jpg',
-        technologies: ['React', 'Express', 'PostgreSQL'],
+        title: 'Python Adventure',
+        description: 'Interactive Python programming game',
+        image: '/PythonAdventure.png',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap','React'],
         githubUrl: 'https://github.com/username/blog-platform',
         liveUrl: 'https://blog-platform-demo.com'
       }
