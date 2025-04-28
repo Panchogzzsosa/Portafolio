@@ -39,7 +39,7 @@ function Navbar({ activeSection, setActiveSection }) {
           onClick={handleHomeClick}
           className={activeSection === 'home' ? 'active' : ''}
         >
-          Inicio
+          {translations[language].nav.home}
         </a>
         <a
           href="#about"

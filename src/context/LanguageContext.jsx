@@ -5,6 +5,7 @@ const LanguageContext = createContext();
 export const translations = {
   en: {
     nav: {
+      home: 'Main',
       about: 'About',
       projects: 'Projects',
       skills: 'Skills',
@@ -52,6 +53,7 @@ export const translations = {
   },
   es: {
     nav: {
+      home: 'Inicio',
       about: 'Sobre Mí',
       projects: 'Proyectos',
       skills: 'Habilidades',
