@@ -229,6 +229,14 @@ function Projects() {
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap','React'],
         githubUrl: 'https://github.com/Panchogzzsosa/Python-Adventure',
         liveUrl: 'https://pythonadventure.netlify.app/'
+      },
+      {
+        title: 'Sistema Web de Servicios de Grateksa',
+        description: 'Plataforma web para la empresa Grateksa que muestra y gestiona servicios profesionales de protección civil, bomberos, ambulancias, brigadas y seguridad para empresas y eventos.',
+        image: '/grateksa.png',
+        technologies: ['Node.js', 'Express', 'EJS', 'HTML5', 'CSS3', 'TailwindCSS', 'JavaScript', 'AOS'],
+        githubUrl: 'https://github.com/Panchogzzsosa/Grateksa',
+        liveUrl: 'https://grateksa.com'
       }
     ],
     en: [
@@ -253,8 +261,16 @@ function Projects() {
         description: 'Interactive Python programming game',
         image: '/PythonAdventure.png',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap','React'],
-        githubUrl: 'https://github.com/username/blog-platform',
-        liveUrl: 'https://blog-platform-demo.com'
+        githubUrl: 'https://github.com/Panchogzzsosa/Python-Adventure',
+        liveUrl: 'https://pythonadventure.netlify.app/'
+      },
+      {
+        title: 'Grateksa Services Web System',
+        description: 'Web platform for Grateksa company that displays and manages professional services of civil protection, firefighters, ambulances, brigades, and security for companies and events.',
+        image: '/grateksa.png',
+        technologies: ['Node.js', 'Express', 'EJS', 'HTML5', 'CSS3', 'TailwindCSS', 'JavaScript', 'AOS'],
+        githubUrl: 'https://github.com/Panchogzzsosa/Grateksa',
+        liveUrl: 'https://grateksa.com'
       }
     ]
   }
