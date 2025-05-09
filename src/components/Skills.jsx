@@ -1,5 +1,5 @@
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNode, FaDatabase, FaGit, FaDocker, FaPython } from 'react-icons/fa'
-import { SiFlutter, SiDart } from 'react-icons/si'
+import { SiFlutter, SiDart, SiTailwindcss } from 'react-icons/si'
 import PropTypes from 'prop-types'
 import { motion, LazyMotion, domAnimation } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
@@ -118,7 +118,8 @@ function Skills() {
       { icon: FaHtml5, name: 'HTML5', level: 90 },
       { icon: FaCss3Alt, name: 'CSS3', level: 85 },
       { icon: FaJs, name: 'JavaScript', level: 85 },
-      { icon: FaReact, name: 'React', level: 80 }
+      { icon: FaReact, name: 'React', level: 80 },
+      { icon: SiTailwindcss, name: 'TailwindCSS', level: 85 }
     ],
     'Mobile Development': [
       { icon: SiFlutter, name: 'Flutter', level: 85 },
