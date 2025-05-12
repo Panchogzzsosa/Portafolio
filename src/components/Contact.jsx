@@ -147,7 +147,7 @@ function Contact() {
         >
           {content[language].title}
         </motion.h2>
-        <div className="contact-container">
+        <div className="contact-container centered-contact">
           <motion.div 
             className="contact-info"
             initial={{ opacity: 0, x: -30 }}
@@ -156,29 +156,24 @@ function Contact() {
             transition={{ duration: 0.6 }}
           >
             <motion.div 
-              className="info-card"
+              className="info-card info-card-horizontal"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               whileHover={{ scale: 1.02 }}
             >
-              {contactInfo.map((info, index) => (
-                <motion.div 
-                  key={index} 
-                  className="info-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <info.icon className="info-icon" />
-                  <div className="info-content">
-                    <h3>{info.label}</h3>
-                    <p>{info.value}</p>
+              <div className="info-row">
+                {contactInfo.map((info, index) => (
+                  <div key={index} className="info-item-horizontal">
+                    <info.icon className="info-icon-large" />
+                    <div className="info-content-horizontal">
+                      <h3>{info.label}</h3>
+                      <p>{info.value}</p>
+                    </div>
                   </div>
-                </motion.div>
-              ))}
+                ))}
+              </div>
             </motion.div>
             <div className="social-links">
               {socialLinks.map((social, index) => (
@@ -218,68 +213,92 @@ function Contact() {
             -webkit-text-fill-color: transparent;
           }
 
-          .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            max-width: 1200px;
+          .contact-container.centered-contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 900px;
             margin: 0 auto;
           }
 
-          .info-card {
+          .contact-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .info-card.info-card-horizontal {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 2rem;
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-          }
-
-          .info-item {
+            width: 100%;
+            max-width: 900px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 1.5rem;
           }
 
-          .info-item:last-child {
-            margin-bottom: 0;
+          .info-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: stretch;
+            width: 100%;
+            gap: 3rem;
           }
 
-          .info-icon {
-            font-size: 1.5rem;
+          .info-item-horizontal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 180px;
+          }
+
+          .info-icon-large {
+            font-size: 2.8rem;
             color: var(--primary-color);
-            margin-right: 1rem;
+            margin-bottom: 1rem;
           }
 
-          .info-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-            color: var(--text-color);
+          .info-content-horizontal h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            text-align: center;
           }
 
-          .info-content p {
+          .info-content-horizontal p {
             color: var(--text-color);
-            opacity: 0.8;
+            opacity: 0.9;
+            font-size: 1.15rem;
+            text-align: center;
           }
 
           .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
             justify-content: center;
           }
 
           .social-link {
             background: rgba(255, 255, 255, 0.05);
             color: var(--text-color);
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 3rem;
+            height: 3rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.7rem;
           }
 
           .contact-form {
@@ -357,21 +376,14 @@ function Contact() {
             color: #00cc00;
           }
 
-          @media (max-width: 768px) {
-            .contact-container {
-              grid-template-columns: 1fr;
+          @media (max-width: 900px) {
+            .info-row {
+              flex-direction: column;
+              gap: 2rem;
+              align-items: center;
             }
-
-            .contact-info {
-              order: 2;
-            }
-
-            .contact-form {
-              order: 1;
-            }
-
-            .section-title {
-              font-size: 2rem;
+            .info-card.info-card-horizontal {
+              padding: 2rem 0.5rem;
             }
           }
         `}</style>
