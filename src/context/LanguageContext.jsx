@@ -69,7 +69,7 @@ export const translations = {
       description: 'Soy un desarrollador web apasionado por crear soluciones digitales innovadoras. Me especializo en el desarrollo Front End y disfruto construyendo aplicaciones web que combinen funcionalidad con una excelente experiencia de usuario.',
       experience: {
         title: 'Experiencia',
-        text: '1 año desarrollando aplicaciones web'
+        text: '+2 años desarrollando aplicaciones web'
       },
       education: {
         title: 'Educación',

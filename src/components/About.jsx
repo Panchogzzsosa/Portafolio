@@ -15,7 +15,7 @@ function About({ description = {
       downloadCV: 'Ver CV',
       experience: {
         title: 'Experiencia',
-        text: '1 año desarrollando aplicaciones web'
+        text: '+2 años desarrollando aplicaciones web'
       },
       education: {
         title: 'Educación',
