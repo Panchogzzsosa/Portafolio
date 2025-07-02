@@ -237,6 +237,14 @@ function Projects() {
         technologies: ['Node.js', 'Express', 'EJS', 'HTML5', 'CSS3', 'TailwindCSS', 'JavaScript', 'AOS'],
         githubUrl: 'https://github.com/Panchogzzsosa/Grateksa',
         liveUrl: 'https://grateksa.com'
+      },
+      {
+        title: 'Pymera',
+        description: 'Plataforma de diagnóstico y acompañamiento empresarial para mejorar la toma de decisiones.',
+        image: '/favicon.png',
+        technologies: ['React', 'Node.js', 'Diagnóstico Empresarial'],
+        githubUrl: '',
+        liveUrl: 'https://pymera.mx/'
       }
     ],
     en: [
@@ -271,6 +279,14 @@ function Projects() {
         technologies: ['Node.js', 'Express', 'EJS', 'HTML5', 'CSS3', 'TailwindCSS', 'JavaScript', 'AOS'],
         githubUrl: 'https://github.com/Panchogzzsosa/Grateksa',
         liveUrl: 'https://grateksa.com'
+      },
+      {
+        title: 'Pymera',
+        description: 'Business diagnostics and support platform to improve decision-making.',
+        image: '/favicon.png',
+        technologies: ['React', 'Node.js', 'Business Diagnostics'],
+        githubUrl: '',
+        liveUrl: 'https://pymera.mx/'
       }
     ]
   }
