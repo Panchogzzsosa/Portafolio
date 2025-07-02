@@ -241,7 +241,7 @@ function Projects() {
       {
         title: 'Pymera',
         description: 'Plataforma de diagnóstico y acompañamiento empresarial para mejorar la toma de decisiones.',
-        image: '/favicon.png',
+        image: '/pymera.png',
         technologies: ['React', 'Node.js', 'Diagnóstico Empresarial'],
         githubUrl: '',
         liveUrl: 'https://pymera.mx/'
