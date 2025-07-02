@@ -106,7 +106,7 @@ function Contact() {
     {
       icon: FaPhone,
       label: content[language].contact.phone,
-      value: '+52 8123584236'
+      value: '+52 8117220005'
     },
     {
       icon: FaMapMarkerAlt,
