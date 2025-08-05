@@ -1,18 +1,16 @@
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 import { useLanguage } from '../context/LanguageContext'
 
-function ProjectCard({ title, description, image, technologies, githubUrl, liveUrl }) {
+function ProjectCard({ title, description, image, technologies, liveUrl }) {
   const { language } = useLanguage()
   const buttonText = {
     es: {
-      code: 'Código',
-      demo: 'Demo'
+      demo: 'Web'
     },
     en: {
-      code: 'Code',
-      demo: 'Demo'
+      demo: 'Web'
     }
   }
 
@@ -34,18 +32,6 @@ function ProjectCard({ title, description, image, technologies, githubUrl, liveU
           transition={{ duration: 0.3 }}
         >
           <div className="project-links">
-            {githubUrl && (
-              <motion.a 
-                href={githubUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="project-link"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FaGithub /> {buttonText[language].code}
-              </motion.a>
-            )}
             {liveUrl && (
               <motion.a 
                 href={liveUrl} 
@@ -197,7 +183,6 @@ ProjectCard.propTypes = {
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  githubUrl: PropTypes.string,
   liveUrl: PropTypes.string
 }
 
@@ -207,11 +192,24 @@ function Projects() {
   const projectsData = {
     es: [
       {
+        title: 'Funny Noise Club - Plataforma Web Musical',
+        description: 'Plataforma web completa para un club de música independiente con sistema de registro de miembros, credenciales personalizadas, panel de administración, envío de correos promocionales y galería musical. Desarrollado para la disquera Worldwide.',
+        image: '/Arte urboi.webp',
+        technologies: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'PHPMailer', 'Composer', 'XAMPP'],
+        liveUrl: 'https://funnynoiseclub.com/'
+      },
+      {
+        title: 'Sistema Web MAYDAY - Worldwide Records',
+        description: 'Sistema web completo para disco MAYDAY con registro de participantes, dashboard administrativo, muro de registros, posters personalizados y exportación de datos a Excel. Desarrollado para la disquera Worldwide.',
+        image: '/Mayday.png',
+        technologies: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'MariaDB', 'XAMPP'],
+        liveUrl: 'https://mayday2k.com/'
+      },
+      {
         title: 'Plataforma E-commerce',
         description: 'Plataforma de comercio electrónico con carrito de compras, pagos y gestión de productos.',
         image: '/jersix.jpeg',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
-        githubUrl: 'https://github.com/Panchogzzsosa/JersixMx',
         liveUrl: 'https://jersix.mx'
       },
       {
@@ -219,7 +217,6 @@ function Projects() {
         description: 'Página de destino para una plataforma de educación financiera.',
         image: '/capitanfinanciero.png',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
-        githubUrl: 'https://github.com/Panchogzzsosa/CapitanFinanciero',
         liveUrl: 'https://capitanfinanciero.com'
       },
       {
@@ -227,7 +224,6 @@ function Projects() {
         description: 'Juego interactivo de programación en Python',
         image: '/PythonAdventure.png',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap','React'],
-        githubUrl: 'https://github.com/Panchogzzsosa/Python-Adventure',
         liveUrl: 'https://pythonadventure.netlify.app/'
       },
       {
@@ -235,7 +231,6 @@ function Projects() {
         description: 'Plataforma web para la empresa Grateksa que muestra y gestiona servicios profesionales de protección civil, bomberos, ambulancias, brigadas y seguridad para empresas y eventos.',
         image: '/grateksa.png',
         technologies: ['Node.js', 'Express', 'EJS', 'HTML5', 'CSS3', 'TailwindCSS', 'JavaScript', 'AOS'],
-        githubUrl: 'https://github.com/Panchogzzsosa/Grateksa',
         liveUrl: 'https://grateksa.com'
       },
       {
@@ -243,17 +238,29 @@ function Projects() {
         description: 'Plataforma de diagnóstico y acompañamiento empresarial para mejorar la toma de decisiones.',
         image: '/pymera.png',
         technologies: ['React', 'Node.js', 'Diagnóstico Empresarial'],
-        githubUrl: '',
         liveUrl: 'https://pymera.mx/'
       }
     ],
     en: [
       {
+        title: 'Funny Noise Club - Musical Web Platform',
+        description: 'Complete web platform for an independent music club with member registration system, personalized credentials, administration panel, promotional email sending, and musical gallery. Developed for Worldwide Records.',
+        image: '/Arte urboi.webp',
+        technologies: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'PHPMailer', 'Composer', 'XAMPP'],
+        liveUrl: 'https://funnynoiseclub.com/'
+      },
+      {
+        title: 'MAYDAY Web System - Worldwide Records',
+        description: 'Complete web system for MAYDAY album with participant registration, administrative dashboard, records wall, personalized posters, and Excel data export. Developed for Worldwide Records.',
+        image: '/Mayday.png',
+        technologies: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'MariaDB', 'XAMPP'],
+        liveUrl: 'https://mayday2k.com/'
+      },
+      {
         title: 'E-commerce Platform',
         description: 'E-commerce platform with shopping cart, payments, and product management.',
         image: '/jersix.jpeg',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
-        githubUrl: 'https://github.com/Panchogzzsosa/JersixMx',
         liveUrl: 'https://jersix.mx'
       },
       {
@@ -261,7 +268,6 @@ function Projects() {
         description: 'Landing page for a financial education platform.',
         image: '/capitanfinanciero.png',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
-        githubUrl: 'https://github.com/Panchogzzsosa/CapitanFinanciero',
         liveUrl: 'https://capitanfinanciero.com'
       },
       {
@@ -269,7 +275,6 @@ function Projects() {
         description: 'Interactive Python programming game',
         image: '/PythonAdventure.png',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap','React'],
-        githubUrl: 'https://github.com/Panchogzzsosa/Python-Adventure',
         liveUrl: 'https://pythonadventure.netlify.app/'
       },
       {
@@ -277,15 +282,13 @@ function Projects() {
         description: 'Web platform for Grateksa company that displays and manages professional services of civil protection, firefighters, ambulances, brigades, and security for companies and events.',
         image: '/grateksa.png',
         technologies: ['Node.js', 'Express', 'EJS', 'HTML5', 'CSS3', 'TailwindCSS', 'JavaScript', 'AOS'],
-        githubUrl: 'https://github.com/Panchogzzsosa/Grateksa',
         liveUrl: 'https://grateksa.com'
       },
       {
         title: 'Pymera',
         description: 'Business diagnostics and support platform to improve decision-making.',
-        image: '/favicon.png',
+        image: '/pymera.png',
         technologies: ['React', 'Node.js', 'Business Diagnostics'],
-        githubUrl: '',
         liveUrl: 'https://pymera.mx/'
       }
     ]

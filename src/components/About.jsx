@@ -4,8 +4,8 @@ import { motion, LazyMotion, domAnimation } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
 
 function About({ description = {
-  es: 'Soy un desarrollador web apasionado por crear soluciones digitales innovadoras. Me especializo en el desarrollo Front End y disfruto construyendo aplicaciones web que combinen funcionalidad con una excelente experiencia de usuario.',
-  en: 'I am a web developer passionate about creating innovative digital solutions. I specialize in Front End development and enjoy building web applications that combine functionality with excellent user experience.'
+  es: 'Soy un desarrollador web apasionado por crear soluciones digitales innovadoras. Me especializo en el desarrollo Full Stack y disfruto construyendo aplicaciones web que combinen funcionalidad con una excelente experiencia de usuario.',
+  en: 'I am a web developer passionate about creating innovative digital solutions. I specialize in Full Stack development and enjoy building web applications that combine functionality with excellent user experience.'
 } }) {
   const { language } = useLanguage()
 
@@ -87,7 +87,7 @@ function About({ description = {
                 {description[language]}
               </motion.p>
               <motion.a
-                href="/cv.pdf"
+                href="/Cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cv-download-button"
