@@ -192,7 +192,7 @@ function Projects() {
   const projectsData = {
     es: [
       {
-        title: 'Funny Noise Club - Plataforma Web Musical',
+        title: 'FunnyNoiseClub - Worldwide Records',
         description: 'Plataforma web completa para un club de música independiente con sistema de registro de miembros, credenciales personalizadas, panel de administración, envío de correos promocionales y galería musical. Desarrollado para la disquera Worldwide.',
         image: '/Arte urboi.webp',
         technologies: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'PHPMailer', 'Composer', 'XAMPP'],
@@ -206,14 +206,14 @@ function Projects() {
         liveUrl: 'https://mayday2k.com/'
       },
       {
-        title: 'Plataforma E-commerce',
+        title: 'Plataforma E-commerce - Jersix',
         description: 'Plataforma de comercio electrónico con carrito de compras, pagos y gestión de productos.',
         image: '/jersix.jpeg',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
         liveUrl: 'https://jersix.mx'
       },
       {
-        title: 'Landing Page de Plataforma de Educación Financiera',
+        title: 'Landing Page de Plataforma de Educación Financiera - Capitan Financiero',
         description: 'Página de destino para una plataforma de educación financiera.',
         image: '/capitanfinanciero.png',
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'MySQL'],
@@ -227,7 +227,7 @@ function Projects() {
         liveUrl: 'https://pythonadventure.netlify.app/'
       },
       {
-        title: 'Sistema Web de Servicios de Grateksa',
+        title: 'Sistema Web de Servicios - Grateksa',
         description: 'Plataforma web para la empresa Grateksa que muestra y gestiona servicios profesionales de protección civil, bomberos, ambulancias, brigadas y seguridad para empresas y eventos.',
         image: '/grateksa.png',
         technologies: ['Node.js', 'Express', 'EJS', 'HTML5', 'CSS3', 'TailwindCSS', 'JavaScript', 'AOS'],
@@ -243,7 +243,7 @@ function Projects() {
     ],
     en: [
       {
-        title: 'Funny Noise Club - Musical Web Platform',
+        title: 'FunnyNoiseClub - Worldwide Records',
         description: 'Complete web platform for an independent music club with member registration system, personalized credentials, administration panel, promotional email sending, and musical gallery. Developed for Worldwide Records.',
         image: '/Arte urboi.webp',
         technologies: ['PHP', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'PHPMailer', 'Composer', 'XAMPP'],
